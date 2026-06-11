@@ -1,37 +1,17 @@
+import Header from './components/header';
+
 function App() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-950">
-      <header className="border-b border-slate-900 bg-slate-950 text-slate-100">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="space-y-2">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-slate-200">Resilient Business Solutions</p>
-            <div className="flex flex-wrap gap-4 text-sm text-slate-300">
-              <a href="tel:+916388663376" className="hover:text-white">+91-6388663376</a>
-              <a href="tel:+919695959599" className="hover:text-white">+91-9695959599</a>
-              <a href="tel:+919648390997" className="hover:text-white">+91-9648390997</a>
-            </div>
-          </div>
-          <nav className="flex flex-wrap items-center gap-4 text-sm font-medium text-slate-300">
-            <a href="#service_section" className="hover:text-white">Services</a>
-            <a href="https://anantarecruitment.com/international/" className="hover:text-white" target="_blank" rel="noreferrer">International</a>
-            <a href="#job_section" className="hover:text-white">Jobs</a>
-            <a href="#quote_section" className="rounded-full border border-slate-200 px-4 py-2 text-slate-100 transition hover:bg-white hover:text-slate-950">Contact Us</a>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       <main className="mx-auto max-w-7xl px-6 py-10">
         <section className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div className="space-y-8">
-            <div className="inline-flex rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow-sm">Staffing & Consulting</div>
             <div className="space-y-6">
               <h1 className="max-w-3xl text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl">
-                Resilient Business Solutions
-                <span className="block text-indigo-600">Staffing Solutions for Lucknow and beyond.</span>
+                Build AI-Powered Products
               </h1>
-              <p className="max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
-                Resilient Business Solutions is renowned for its exceptional consultancy services in Lucknow. Our unparalleled job placement assistance builds a strong link between recruiters and ambitious professionals.
-              </p>
             </div>
             <div className="flex flex-col gap-4 sm:flex-row">
               <a href="#service_section" className="inline-flex items-center justify-center rounded-2xl bg-slate-950 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-slate-800">
