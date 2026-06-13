@@ -49,7 +49,7 @@ export default function Hero() {
 
             <div className="animate-fade-up animate-delay-400 opacity-0-start flex flex-wrap gap-8 pt-4">
               {[
-                { value: '500+', label: 'Engineers placed' },
+                { value: '250+', label: 'Engineers placed' },
                 { value: '48hr', label: 'Avg. shortlist time' },
                 { value: '98%', label: 'Client retention' },
               ].map((stat) => (
