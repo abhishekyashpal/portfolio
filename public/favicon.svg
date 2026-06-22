@@ -1,0 +1,20 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="resilient-favicon-bg" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6366F1"/>
+      <stop offset="1" stop-color="#A78BFA"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="url(#resilient-favicon-bg)"/>
+  <path
+    d="M29.8 41.3c-.7-2.6-2.7-4.6-5.3-5.3l-12.3-3.2c-1.2-.3-1.2-2 0-2.3l12.3-3.2c2.6-.7 4.6-2.7 5.3-5.3l3.2-12.3c.3-1.2 2-1.2 2.3 0L38.5 22c.7 2.6 2.7 4.6 5.3 5.3l12.3 3.2c1.2.3 1.2 2 0 2.3L43.8 36c-2.6.7-4.6 2.7-5.3 5.3l-3.2 12.3c-.3 1.2-2 1.2-2.3 0l-3.2-12.3Z"
+    stroke="white"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path d="M51 7v9" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  <path d="M55.5 11.5h-9" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  <path d="M13 48v6" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  <path d="M16 51h-6" stroke="white" stroke-width="4" stroke-linecap="round"/>
+</svg>
