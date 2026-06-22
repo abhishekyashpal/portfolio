@@ -1,4 +1,4 @@
-import { ArrowRightLeft, Briefcase, Users } from 'lucide-react';
+import { ArrowRightLeft, Users } from 'lucide-react';
 
 const services = [
   {
@@ -6,7 +6,7 @@ const services = [
     title: 'Talent Outsourcing',
     tagline: 'Engineers on our payroll, dedicated to you',
     description:
-      'Scale your team instantly with pre-vetted engineers employed on our payroll. Full compliance, HR, and payroll handled — you get focused talent embedded in your workflows from day one.',
+      'Scale your team instantly with pre-vetted engineers employed on our payroll. Full compliance, HR, and payroll handled so you get focused talent embedded in your workflows from day one.',
     highlights: [
       'Dedicated AI & engineering pods',
       'Monthly or long-term contracts',
@@ -15,21 +15,6 @@ const services = [
     ],
     cta: 'Build your team',
     primary: true,
-  },
-  {
-    icon: Briefcase,
-    title: 'IT Recruitment',
-    tagline: 'Permanent hires, placed with precision',
-    description:
-      'End-to-end recruitment for permanent and contract-to-hire roles. We source, screen, and deliver candidates who match your technical bar and culture — not just keywords on a resume.',
-    highlights: [
-      'Permanent & contract-to-hire',
-      'Technical screening included',
-      'Executive & mid-level roles',
-      'Global & remote placements',
-    ],
-    cta: 'Start recruiting',
-    primary: false,
   },
   {
     icon: ArrowRightLeft,
@@ -60,12 +45,12 @@ export default function Services() {
             <span className="gradient-text">one talent network</span>
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-slate-400">
-            Whether you need engineers on our payroll or permanent hires for your team,
+            Whether you need engineers on our payroll or flexible project capacity,
             we deliver vetted talent through the same AI-powered pipeline.
           </p>
         </div>
 
-        <div className="mt-16 grid gap-6 lg:grid-cols-3">
+        <div className="mx-auto mt-16 grid max-w-5xl gap-6 lg:grid-cols-2">
           {services.map((service) => (
             <article
               key={service.title}
@@ -102,7 +87,7 @@ export default function Services() {
                   service.primary ? 'text-accent-light hover:text-white' : 'text-slate-400 hover:text-white'
                 }`}
               >
-                {service.cta} →
+                {service.cta} -&gt;
               </a>
             </article>
           ))}
