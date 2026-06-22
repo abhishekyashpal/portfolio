@@ -25,8 +25,11 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [talentOpen, setTalentOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileTalentOpen, setMobileTalentOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const isInnerPage = window.location.pathname !== '/';
   const contactHref = isInnerPage ? '#contact' : '/#contact';
+  const solidHeader = scrolled || isInnerPage || mobileOpen;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -40,18 +43,18 @@ export default function Header() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled || isInnerPage
-          ? 'border-b border-white/[0.06] bg-surface/80 backdrop-blur-xl'
-          : 'bg-transparent'
+        solidHeader
+          ? 'border-b border-white/[0.06] bg-surface/95 backdrop-blur-xl lg:bg-surface/80'
+          : 'border-b border-white/[0.06] bg-surface/95 backdrop-blur-xl lg:border-transparent lg:bg-transparent lg:backdrop-blur-0'
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <a href="/" className="flex items-center gap-2.5">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-accent to-accent-glow">
+      <div className="mx-auto flex min-h-16 max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:py-4">
+        <a href="/" className="flex shrink-0 items-center gap-2.5">
+          <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-accent to-accent-glow sm:h-9 sm:w-9">
             <Sparkles className="h-4 w-4 text-white" />
           </div>
           <div>
-            <span className="font-display text-lg font-bold tracking-tight text-white">Resilient</span>
+            <span className="font-display text-base font-bold tracking-tight text-white sm:text-lg">Resilient</span>
           </div>
         </a>
 
@@ -142,14 +145,15 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
-          <a href={contactHref} className="btn-primary hidden text-sm md:inline-flex">
+        <div className="flex shrink-0 items-center gap-3">
+          <a href={contactHref} className="btn-primary hidden text-sm xl:inline-flex">
             Book a Discovery Call
           </a>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="rounded-lg p-2 text-slate-300 transition hover:bg-white/5 hover:text-white lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-slate-300 transition hover:bg-white/5 hover:text-white lg:hidden"
             aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -157,8 +161,8 @@ export default function Header() {
       </div>
 
       {mobileOpen && (
-        <div className="border-t border-white/[0.06] bg-surface/95 backdrop-blur-xl lg:hidden">
-          <nav className="mx-auto max-w-7xl space-y-1 px-6 py-4">
+        <div className="absolute inset-x-0 top-full max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-white/[0.06] bg-surface/[0.98] shadow-2xl shadow-black/40 backdrop-blur-xl lg:hidden">
+          <nav className="mx-auto max-w-7xl space-y-1 px-4 py-4 sm:px-6">
             <a
               href="/"
               onClick={() => setMobileOpen(false)}
@@ -166,30 +170,73 @@ export default function Header() {
             >
               Home
             </a>
-            <a
-              href="/#services"
-              onClick={() => setMobileOpen(false)}
-              className="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-300 hover:bg-white/5 hover:text-white"
-            >
-              Services
-            </a>
-            <a
-              href="/corporate-training"
-              onClick={() => setMobileOpen(false)}
-              className="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-300 hover:bg-white/5 hover:text-white"
-            >
-              Corporate Training
-            </a>
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-300 hover:bg-white/5 hover:text-white"
+
+            <div>
+              <button
+                type="button"
+                onClick={() => setMobileTalentOpen(!mobileTalentOpen)}
+                className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-left text-sm font-medium text-slate-300 hover:bg-white/5 hover:text-white"
+                aria-expanded={mobileTalentOpen}
               >
-                {link.label}
-              </a>
-            ))}
+                Hire Talent
+                <ChevronDown className={`h-4 w-4 transition-transform ${mobileTalentOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {mobileTalentOpen && (
+                <div className="space-y-1 py-1 pl-3">
+                  {talentDropdown.map((item) => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="block rounded-lg px-3 py-2 text-sm text-slate-400 hover:bg-white/5 hover:text-white"
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div>
+              <button
+                type="button"
+                onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-left text-sm font-medium text-slate-300 hover:bg-white/5 hover:text-white"
+                aria-expanded={mobileServicesOpen}
+              >
+                Services
+                <ChevronDown className={`h-4 w-4 transition-transform ${mobileServicesOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {mobileServicesOpen && (
+                <div className="space-y-1 py-1 pl-3">
+                  {servicesDropdown.map((item) => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="block rounded-lg px-3 py-2 text-sm text-slate-400 hover:bg-white/5 hover:text-white"
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <a
+              href="/#process"
+              onClick={() => setMobileOpen(false)}
+              className="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-300 hover:bg-white/5 hover:text-white"
+            >
+              How It Works
+            </a>
+            <a
+              href="/#why-us"
+              onClick={() => setMobileOpen(false)}
+              className="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-300 hover:bg-white/5 hover:text-white"
+            >
+              Why Us
+            </a>
             <a
               href={contactHref}
               onClick={() => setMobileOpen(false)}
