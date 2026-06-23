@@ -2,7 +2,9 @@ import {
   BarChart3,
   Brain,
   Building2,
+  CheckCircle2,
   Cloud,
+  Code2,
   Database,
   GraduationCap,
   Layers3,
@@ -95,24 +97,30 @@ const categories = [
 export default function CorporateTraining() {
   return (
     <section className="relative overflow-hidden pt-40 pb-24">
-      <div className="absolute inset-0 bg-grid-pattern bg-grid opacity-40" />
-      <div className="absolute inset-0 bg-radial-glow" />
+      <div className="coding-lab-grid absolute inset-0" />
+      <div className="coding-lab-glow absolute inset-0" />
 
       <div className="relative mx-auto max-w-7xl px-6">
-        <div className="max-w-4xl">
-          <p className="section-label">Corporate Training</p>
-          <h1 className="mt-4 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Industry-ready programs for{' '}
-            <span className="gradient-text">corporates, colleges, and individuals</span>
+        <div className="max-w-5xl">
+          <div className="inline-flex items-center gap-3 rounded-full border border-orange-300/25 bg-orange-300/10 px-4 py-2 text-sm font-semibold text-orange-100">
+            <Code2 className="h-4 w-4 text-yellow-300" />
+            Dedicated training vertical by Resilient
+          </div>
+          <p className="section-label mt-8">Sub Brand For Training</p>
+          <h1 className="mt-4 font-display text-6xl font-bold tracking-tight text-white sm:text-7xl lg:text-8xl">
+            <span className="gradient-text block">Coding Lab</span>
+            <span className="mt-4 block text-3xl leading-tight text-white sm:text-4xl lg:text-5xl">
+              hands-on programs for teams, colleges, and career builders
+            </span>
           </h1>
-          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-slate-400">
-            Resilient delivers practical cohorts across software, cloud, AI, and data roles.
-            Every program is built around hands-on labs, real project work, assessments, and a
-            final capstone that proves job readiness.
+          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
+            Coding Lab is the dedicated training wing for practical software, cloud, AI, and data
+            learning. Every cohort runs on guided labs, real project work, assessments, and a final
+            capstone that proves job readiness.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a href="#contact" className="btn-primary">
-              Plan a training program
+              Plan a Coding Lab program
             </a>
             <a href="#programs" className="btn-secondary">
               View categories
@@ -122,16 +130,16 @@ export default function CorporateTraining() {
 
         <div className="mt-16 grid gap-5 lg:grid-cols-3">
           {audiences.map((audience) => (
-            <article key={audience.title} className="glass-card-hover p-6">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/15">
-                <audience.icon className="h-6 w-6 text-accent-light" />
+            <article key={audience.title} className="coding-lab-card p-6">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-300/10">
+                <audience.icon className="h-6 w-6 text-orange-200" />
               </div>
               <h2 className="mt-5 font-display text-xl font-bold text-white">{audience.title}</h2>
-              <p className="mt-3 text-sm leading-relaxed text-slate-400">{audience.description}</p>
+              <p className="mt-3 text-sm leading-relaxed text-stone-400">{audience.description}</p>
               <ul className="mt-5 space-y-2">
                 {audience.points.map((point) => (
-                  <li key={point} className="flex items-center gap-2 text-sm text-slate-300">
-                    <span className="h-1.5 w-1.5 rounded-full bg-accent-cyan" />
+                  <li key={point} className="flex items-center gap-2 text-sm text-stone-300">
+                    <CheckCircle2 className="h-4 w-4 text-yellow-300" />
                     {point}
                   </li>
                 ))}
@@ -151,21 +159,21 @@ export default function CorporateTraining() {
 
           <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {categories.map((category) => (
-              <article key={category.title} className="glass-card-hover flex flex-col p-6">
+              <article key={category.title} className="coding-lab-card flex flex-col p-6">
                 <div className="flex items-center gap-4">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white/[0.05]">
-                    <category.icon className="h-5 w-5 text-accent-light" />
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/[0.06]">
+                    <category.icon className="h-5 w-5 text-orange-200" />
                   </div>
                   <h3 className="font-display text-lg font-bold text-white">{category.title}</h3>
                 </div>
-                <p className="mt-4 flex-1 text-sm leading-relaxed text-slate-400">
+                <p className="mt-4 flex-1 text-sm leading-relaxed text-stone-400">
                   {category.description}
                 </p>
                 <div className="mt-6 flex flex-wrap gap-2">
                   {category.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1 text-xs font-medium text-slate-300"
+                      className="rounded-full border border-orange-300/10 bg-orange-300/[0.06] px-3 py-1 text-xs font-medium text-orange-50"
                     >
                       {skill}
                     </span>
@@ -176,14 +184,14 @@ export default function CorporateTraining() {
           </div>
         </div>
 
-        <div className="mt-20 glass-card p-6 sm:p-8">
+        <div className="coding-lab-card mt-20 p-6 sm:p-8">
           <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
               <p className="section-label">Delivery Model</p>
               <h2 className="mt-3 font-display text-3xl font-bold text-white">
-                Training, internship-style projects, assessment, and certificate.
+                Lab-first training, internship-style projects, assessment, and certificate.
               </h2>
-              <p className="mt-4 max-w-3xl text-sm leading-relaxed text-slate-400">
+              <p className="mt-4 max-w-3xl text-sm leading-relaxed text-stone-400">
                 Programs can run as weekend batches, weekday corporate cohorts, campus bootcamps,
                 or custom modules based on your hiring and upskilling goals.
               </p>
@@ -194,9 +202,9 @@ export default function CorporateTraining() {
                 { value: 'Live + labs', label: 'Practical format' },
                 { value: 'Capstone', label: 'Final evaluation' },
               ].map((item) => (
-                <div key={item.label} className="rounded-2xl border border-white/[0.08] bg-surface/50 p-4">
+                <div key={item.label} className="rounded-xl border border-orange-300/10 bg-[#18100a]/70 p-4">
                   <p className="font-display text-2xl font-bold text-white">{item.value}</p>
-                  <p className="mt-1 text-xs text-slate-500">{item.label}</p>
+                  <p className="mt-1 text-xs text-orange-100/60">{item.label}</p>
                 </div>
               ))}
             </div>

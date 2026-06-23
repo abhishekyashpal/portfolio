@@ -10,6 +10,7 @@ import Testimonials from './components/testimonials';
 import FAQ from './components/faq';
 import Contact from './components/contact';
 import Footer from './components/footer';
+import FeedbackWidget from './components/feedback-widget';
 
 function HomePage() {
   return (
@@ -35,10 +36,11 @@ function App() {
       <Header />
       <main>
         {isCorporateTrainingPage ? (
-          <>
+          <div className="coding-lab-page">
             <CorporateTraining />
             <Contact variant="training" />
-          </>
+            <FeedbackWidget />
+          </div>
         ) : (
           <HomePage />
         )}

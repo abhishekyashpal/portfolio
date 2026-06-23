@@ -80,3 +80,51 @@
     opacity: 0;
   }
 }
+@layer components {
+  .coding-lab-page {
+    background: #120b07;
+  }
+
+  .coding-lab-page .section-label {
+    @apply text-orange-200;
+  }
+
+  .coding-lab-page .gradient-text {
+    @apply bg-gradient-to-r from-yellow-200 via-orange-300 to-red-400 bg-clip-text text-transparent;
+  }
+
+  .coding-lab-page .btn-primary {
+    @apply bg-gradient-to-r from-yellow-300 via-orange-400 to-red-500 text-[#160b05] shadow-orange-500/25 hover:shadow-orange-400/40;
+  }
+
+  .coding-lab-page .btn-secondary {
+    @apply border-orange-300/25 bg-orange-300/[0.07] text-orange-50 hover:border-orange-200/40 hover:bg-orange-300/[0.12];
+  }
+
+  .coding-lab-page input:focus,
+  .coding-lab-page select:focus,
+  .coding-lab-page textarea:focus {
+    border-color: rgba(251, 146, 60, 0.55);
+    box-shadow: 0 0 0 1px rgba(251, 146, 60, 0.25);
+  }
+
+  .coding-lab-grid {
+    background-image:
+      linear-gradient(to right, rgba(251, 146, 60, 0.09) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(251, 146, 60, 0.09) 1px, transparent 1px);
+    background-size: 56px 56px;
+    opacity: 0.46;
+  }
+
+  .coding-lab-glow {
+    background:
+      radial-gradient(ellipse 76% 46% at 50% -8%, rgba(249, 115, 22, 0.32), transparent),
+      radial-gradient(ellipse 44% 34% at 82% 26%, rgba(253, 224, 71, 0.14), transparent),
+      linear-gradient(180deg, rgba(18, 11, 7, 0.12), #120b07 86%);
+  }
+
+  .coding-lab-card {
+    @apply rounded-2xl border border-orange-300/15 bg-[#18100a]/80 backdrop-blur-xl transition-all duration-300 hover:border-orange-200/35 hover:bg-[#21150c]/90;
+  }
+}
+

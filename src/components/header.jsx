@@ -17,7 +17,7 @@ const talentDropdown = [
 const servicesDropdown = [
   { label: 'Talent Outsourcing', desc: 'Dedicated engineers on our payroll', href: '/#services', badge: 'Core' },
   { label: 'Staff Augmentation', desc: 'Flexible capacity for projects and sprints', href: '/#services' },
-  { label: 'Corporate Training', desc: 'Programs for companies, colleges, and individuals', href: '/corporate-training', badge: 'New' },
+  { label: 'Coding Lab Training', desc: 'Hands-on tech programs for teams and colleges', href: '/corporate-training', badge: 'New' },
 ];
 
 export default function Header() {

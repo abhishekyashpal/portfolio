@@ -29,15 +29,15 @@ const contactContent = {
     ],
   },
   training: {
-    eyebrow: 'Training Inquiry',
+    eyebrow: 'Coding Lab Inquiry',
     heading: (
       <>
-        Plan a <span className="gradient-text">training program</span>
+        Plan a <span className="gradient-text">Coding Lab program</span>
       </>
     ),
     description:
-      'Send us your training requirement for corporate teams, colleges, or individual cohorts. Share the audience, category, batch size, and preferred duration.',
-    subjectPrefix: 'Corporate Training Inquiry',
+      'Send us your training requirement for corporate teams, colleges, or individual cohorts. Share the audience, track, batch size, and preferred duration.',
+    subjectPrefix: 'Coding Lab Training Inquiry',
     fieldLabel: 'Training Category',
     bodyLabel: 'Training Category',
     companyLabel: 'Organization / College',
