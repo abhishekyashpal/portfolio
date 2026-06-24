@@ -1,4 +1,5 @@
 import { ArrowRight, Mail, MapPin, Phone } from 'lucide-react';
+import { coursePricing } from '../data/courses';
 
 const contactContent = {
   talent: {
@@ -49,15 +50,7 @@ const contactContent = {
       'Corporate Team Training',
       'College Training Program',
       'Individual Training',
-      'Gen AI Engineer',
-      'ML Engineer',
-      'Cloud / DevOps',
-      'UI Development',
-      'Backend Development',
-      'Full Stack Development',
-      'Data Engineering',
-      'Data Analyst',
-      'Database Engineer',
+      ...coursePricing.map((course) => course.title),
     ],
   },
 };

@@ -1,17 +1,22 @@
+import { useRef, useState } from 'react';
 import {
   BarChart3,
   Brain,
   Building2,
   CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
   Cloud,
   Code2,
   Database,
   GraduationCap,
+  IndianRupee,
   Layers3,
   Monitor,
   Server,
   UserRound,
 } from 'lucide-react';
+import { coursePricing, formatPrice, getDiscountedPrice } from '../data/courses';
 
 const audiences = [
   {
@@ -95,6 +100,28 @@ const categories = [
 ];
 
 export default function CorporateTraining() {
+  const [activeCourseIndex, setActiveCourseIndex] = useState(0);
+  const courseRailRef = useRef(null);
+  const courseCardRefs = useRef([]);
+
+  const showCourse = (index) => {
+    const nextIndex = (index + coursePricing.length) % coursePricing.length;
+    setActiveCourseIndex(nextIndex);
+    courseCardRefs.current[nextIndex]?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'start',
+    });
+  };
+
+  const showPreviousCourse = () => {
+    showCourse(activeCourseIndex - 1);
+  };
+
+  const showNextCourse = () => {
+    showCourse(activeCourseIndex + 1);
+  };
+
   return (
     <section className="relative overflow-hidden pt-40 pb-24">
       <div className="coding-lab-grid absolute inset-0" />
@@ -181,6 +208,151 @@ export default function CorporateTraining() {
                 </div>
               </article>
             ))}
+          </div>
+        </div>
+
+        <div id="pricing" className="mt-24">
+          <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+            <div>
+              <p className="section-label">Course Pricing</p>
+              <h2 className="section-heading mt-4">
+                Pricing for focused{' '}
+                <span className="gradient-text">career and team tracks</span>
+              </h2>
+            </div>
+            <p className="text-sm leading-relaxed text-stone-400 lg:max-w-2xl">
+              Each program can be priced for individuals, private corporate cohorts, or campus
+              batches. Final fees depend on duration, batch size, delivery format, and capstone
+              depth.
+            </p>
+          </div>
+
+          <div className="mt-12">
+            <div className="grid gap-5 lg:grid-cols-[auto_1fr_auto] lg:items-center">
+              <button
+                type="button"
+                onClick={showPreviousCourse}
+                className="hidden h-12 w-12 items-center justify-center rounded-xl border border-orange-300/20 bg-orange-300/[0.06] text-orange-50 transition hover:border-orange-200/40 hover:bg-orange-300/[0.12] lg:flex"
+                aria-label="Show previous course"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+
+              <div className="overflow-hidden">
+                <div
+                  ref={courseRailRef}
+                  className="flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth py-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                >
+                  {coursePricing.map((course, index) => {
+                    const courseDiscountedPrice = getDiscountedPrice(course);
+                    const courseHasDiscount = Boolean(course.discountPercent);
+
+                    return (
+                      <article
+                        key={course.title}
+                        ref={(element) => {
+                          courseCardRefs.current[index] = element;
+                        }}
+                        className={`coding-lab-card min-w-full snap-start p-5 shadow-2xl shadow-black/20 transition-all duration-300 sm:min-w-[calc(50%_-_10px)] lg:min-w-[calc(33.333%_-_14px)] xl:min-w-[calc(25%_-_15px)] ${
+                          index === activeCourseIndex
+                            ? '-translate-y-2 border-yellow-200/45 shadow-orange-950/40'
+                            : 'hover:-translate-y-1 hover:shadow-orange-950/30'
+                        }`}
+                      >
+                        <div className="flex h-full flex-col">
+                          <div className="flex items-center justify-between gap-3">
+                            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-yellow-300/10">
+                              <IndianRupee className="h-5 w-5 text-yellow-200" />
+                            </div>
+                            {courseHasDiscount && (
+                              <span className="rounded-full bg-yellow-300 px-3 py-1 text-xs font-bold text-[#160b05]">
+                                {course.discountPercent}% OFF
+                              </span>
+                            )}
+                          </div>
+
+                          <p className="mt-5 text-xs font-semibold uppercase tracking-[0.2em] text-orange-100/55">
+                            Course {index + 1} of {coursePricing.length}
+                          </p>
+                          <h3 className="mt-3 min-h-[76px] font-display text-xl font-bold leading-tight text-white">
+                            {course.title}
+                          </h3>
+
+                          <div className="mt-5 flex-1 rounded-xl border border-orange-300/15 bg-[#120b07]/75 p-4">
+                            {courseHasDiscount ? (
+                              <p className="text-sm font-semibold text-stone-500 line-through">
+                                {formatPrice(course.price)}
+                              </p>
+                            ) : (
+                              <p className="text-sm font-semibold text-orange-100/60">
+                                Course price
+                              </p>
+                            )}
+                            <p className="mt-1 font-display text-3xl font-bold text-white">
+                              {formatPrice(courseDiscountedPrice)}
+                            </p>
+                            {courseHasDiscount && (
+                              <p className="mt-2 text-xs font-medium text-orange-100/70">
+                                Limited discounted price
+                              </p>
+                            )}
+                          </div>
+
+                          <a href={`/courses/${course.slug}`} className="btn-primary mt-5 w-full">
+                            Enquire now
+                          </a>
+                        </div>
+                      </article>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={showNextCourse}
+                className="hidden h-12 w-12 items-center justify-center rounded-xl border border-orange-300/20 bg-orange-300/[0.06] text-orange-50 transition hover:border-orange-200/40 hover:bg-orange-300/[0.12] lg:flex"
+                aria-label="Show next course"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            </div>
+
+            <div className="mt-5 flex items-center justify-between gap-4">
+              <button
+                type="button"
+                onClick={showPreviousCourse}
+                className="flex h-11 w-11 items-center justify-center rounded-xl border border-orange-300/20 bg-orange-300/[0.06] text-orange-50 transition hover:border-orange-200/40 hover:bg-orange-300/[0.12] lg:hidden"
+                aria-label="Show previous course"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+
+              <div className="flex flex-wrap justify-center gap-2">
+                {coursePricing.map((course, index) => (
+                  <button
+                    key={course.title}
+                    type="button"
+                    onClick={() => showCourse(index)}
+                    className={`h-2.5 rounded-full transition-all ${
+                      index === activeCourseIndex
+                        ? 'w-8 bg-yellow-300'
+                        : 'w-2.5 bg-orange-100/25 hover:bg-orange-100/45'
+                    }`}
+                    aria-label={`Show ${course.title}`}
+                  />
+                ))}
+              </div>
+
+              <button
+                type="button"
+                onClick={showNextCourse}
+                className="flex h-11 w-11 items-center justify-center rounded-xl border border-orange-300/20 bg-orange-300/[0.06] text-orange-50 transition hover:border-orange-200/40 hover:bg-orange-300/[0.12] lg:hidden"
+                aria-label="Show next course"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            </div>
           </div>
         </div>
 
