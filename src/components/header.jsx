@@ -17,7 +17,9 @@ const talentDropdown = [
 const servicesDropdown = [
   { label: 'Talent Outsourcing', desc: 'Dedicated engineers on our payroll', href: '/#services', badge: 'Core' },
   { label: 'Staff Augmentation', desc: 'Flexible capacity for projects and sprints', href: '/#services' },
-  { label: 'Coding Lab Training', desc: 'Hands-on tech programs for teams and colleges', href: '/corporate-training', badge: 'New' },
+  { label: 'IT Staffing', desc: 'IT Recruitment and Staffing Services', href: '/it-staffing' },
+  { label: 'Recruitment Process Outsourcing', desc: 'End-to-end recruitment management', href: '/recruitment-process-outsourcing' },
+  // { label: 'Coding Lab Training', desc: 'Hands-on tech programs for teams and colleges', href: '/corporate-training', badge: 'New' },
 ];
 
 export default function Header() {
@@ -28,7 +30,8 @@ export default function Header() {
   const [mobileTalentOpen, setMobileTalentOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const isInnerPage = window.location.pathname !== '/';
-  const contactHref = isInnerPage ? '#contact' : '/#contact';
+  const isCoursePage = window.location.pathname.startsWith('/courses/');
+  const contactHref = isCoursePage ? '#course-enquiry' : isInnerPage ? '#contact' : '/#contact';
   const solidHeader = scrolled || isInnerPage || mobileOpen;
 
   useEffect(() => {

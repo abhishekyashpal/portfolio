@@ -29,6 +29,58 @@ const contactContent = {
       'Multiple Roles',
     ],
   },
+  staffing: {
+    eyebrow: 'IT Staffing Request',
+    heading: (
+      <>
+        Need top-tier <span className="gradient-text">IT professionals on demand?</span>
+      </>
+    ),
+    description:
+      'Share the roles, experience level, timeline, and hiring model you need. We will help you source candidates quickly for contract, permanent, or dedicated team staffing.',
+    subjectPrefix: 'IT Staffing Request',
+    fieldLabel: 'Role Category',
+    bodyLabel: 'Role Category',
+    companyLabel: 'Company',
+    companyPlaceholder: 'Your company name',
+    messageLabel: 'Describe your staffing requirement',
+    messagePlaceholder: 'Required profile, number of hires, budget, location, timeline...',
+    button: 'Send IT Staffing Request',
+    options: [
+      'Software Developers',
+      'Cloud / DevOps Engineers',
+      'QA / Test Automation',
+      'Data / AI Engineers',
+      'Cybersecurity Specialists',
+      'Product / Delivery Leads',
+      'Multiple Roles',
+    ],
+  },
+  rpo: {
+    eyebrow: 'RPO Partnership',
+    heading: (
+      <>
+        Build a smarter <span className="gradient-text">recruitment pipeline</span>
+      </>
+    ),
+    description:
+      'Tell us about your hiring goals, open roles, and team growth plan. We will support your recruitment function with sourcing, screening, and end-to-end hiring coordination.',
+    subjectPrefix: 'Recruitment Process Outsourcing Inquiry',
+    fieldLabel: 'Hiring Need',
+    bodyLabel: 'Hiring Need',
+    companyLabel: 'Organization',
+    companyPlaceholder: 'Company or team name',
+    messageLabel: 'Tell us about your hiring goals',
+    messagePlaceholder: 'Open roles, hiring volume, department, target start date...',
+    button: 'Send RPO Inquiry',
+    options: [
+      'Tech Hiring Outsourcing',
+      'Volume Hiring Program',
+      'Enterprise Recruitment Support',
+      'Leadership Hiring',
+      'Specialized Technical Roles',
+    ],
+  },
   training: {
     eyebrow: 'Coding Lab Inquiry',
     heading: (

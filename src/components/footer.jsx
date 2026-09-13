@@ -3,8 +3,9 @@ import { Sparkles } from 'lucide-react';
 const footerLinks = {
   Services: [
     { label: 'Talent Outsourcing', href: '#services' },
-    { label: 'IT Recruitment', href: '#services' },
     { label: 'Staff Augmentation', href: '#services' },
+    { label: 'IT Recruitment', href: '#services' },
+    { label: 'Recruitment Process Outsourcing', href: '#services' },
   ],
   Talent: [
     { label: 'AI Engineers', href: '#talent' },

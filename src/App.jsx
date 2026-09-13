@@ -12,6 +12,8 @@ import FAQ from './components/faq';
 import Contact from './components/contact';
 import Footer from './components/footer';
 import FeedbackWidget from './components/feedback-widget';
+import ITStaffingPage from './components/it-staffing-page';
+import RPOPage from './components/rpo-page';
 
 function HomePage() {
   return (
@@ -30,9 +32,12 @@ function HomePage() {
 }
 
 function App() {
-  const isCorporateTrainingPage = window.location.pathname === '/corporate-training';
-  const courseSlug = window.location.pathname.startsWith('/courses/')
-    ? window.location.pathname.replace('/courses/', '').replace(/\/$/, '')
+  const pathname = window.location.pathname;
+  const isCorporateTrainingPage = pathname === '/corporate-training';
+  const isITStaffingPage = pathname === '/it-staffing';
+  const isRPOPage = pathname === '/recruitment-process-outsourcing';
+  const courseSlug = pathname.startsWith('/courses/')
+    ? pathname.replace('/courses/', '').replace(/\/$/, '')
     : null;
 
   return (
@@ -47,6 +52,10 @@ function App() {
             <Contact variant="training" />
             <FeedbackWidget />
           </div>
+        ) : isITStaffingPage ? (
+          <ITStaffingPage />
+        ) : isRPOPage ? (
+          <RPOPage />
         ) : (
           <HomePage />
         )}
