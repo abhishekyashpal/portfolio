@@ -1,6 +1,7 @@
 import { ArrowRight, BriefcaseBusiness, CheckCircle2, Clock3, Layers3, ShieldCheck, Users } from 'lucide-react';
 import Contact from './contact';
 
+
 const staffingRoles = [
   { title: 'Software Developers', description: 'Frontend, backend, full-stack, and enterprise application engineers.' },
   { title: 'Cloud & DevOps', description: 'AWS, Azure, Kubernetes, CI/CD, and infrastructure specialists.' },
